@@ -126,6 +126,99 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "GenericProject.Controllers.StudentController",
+    "Method": "AddStudent",
+    "RelativePath": "api/Student/AddStudent",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "student",
+        "Type": "GenericProject.Model.Student",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GenericProject.Controllers.StudentController",
+    "Method": "EditStudnet",
+    "RelativePath": "api/Student/EditStudnet",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "student",
+        "Type": "GenericProject.Model.Student",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GenericProject.Controllers.StudentController",
+    "Method": "GetAllStudents",
+    "RelativePath": "api/Student/GetAllStudents",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GenericProject.Controllers.SuperHeroController",
+    "Method": "AddHero",
+    "RelativePath": "api/SuperHero/AddHero",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newHero",
+        "Type": "GenericProject.SuperHeroDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[GenericProject.SuperHero, GenericProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "GenericProject.Controllers.SuperHeroController",
+    "Method": "GetHeroes",
+    "RelativePath": "api/SuperHero/GetHeroes",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[GenericProject.SuperHero, GenericProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "GenericProject.Controllers.WeatherForecastController",
     "Method": "Get",
     "RelativePath": "WeatherForecast",

@@ -8,6 +8,7 @@ namespace GenericProject.Context
         public DbSet<Product> Products { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Blog> Blogs { get; set; }
+        public DbSet<Student> Students { get; set; }
         public MyDbContext(DbContextOptions options):base(options)
         {
             

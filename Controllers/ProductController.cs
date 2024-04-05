@@ -20,57 +20,85 @@ namespace GenericProject.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllProduct()
         {
-            var products = await _productRepository.GetAllAsync();
-            return Ok(products);
+            try {
+             var products = await _productRepository.GetAllAsync();
+             return Ok(products);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+           
         }
 
         [HttpPost]
         public async Task<IActionResult> AddProduct([FromBody] ProductRequest product)
         {
-            var productEntity = new Product()
-            {
-                ProductName = product.ProductName,
-                Price = product.Price,
+            try {
+             var productEntity = new Product()
+             {
+              ProductName = product.ProductName,
+              Price = product.Price,
 
-            };
-            var AddedProduct = await _productRepository.AddAsync(productEntity);
-            return Ok(new
+                };
+                var AddedProduct = await _productRepository.AddAsync(productEntity);
+                return Ok(new
+                {
+                    AddedProduct,
+                    message = "Product Added Successfully"
+                });
+            }
+            catch(Exception ex)
             {
-                AddedProduct,
-                message = "Product Added Successfully"
-            });
+                return BadRequest(ex.Message);
+            }
+            
         }
 
         [HttpPut]
         public async Task<IActionResult> EditProduct([FromBody] ProductRequest product, int id)
         {
-            var productEntity = await _productRepository.GetByIdAsync(id);
-            if (productEntity == null)
-            {
-                return NotFound();
+            try {
+             var productEntity = await _productRepository.GetByIdAsync(id);
+             if (productEntity == null)
+             {
+             return NotFound();
+             }
+                productEntity.ProductName = product.ProductName;
+                productEntity.Price = product.Price;
+                await _productRepository.UpdateAsync(productEntity);
+                return Ok(new
+                {
+                    message = "Product Updated Successfully"
+                });
             }
-            productEntity.ProductName = product.ProductName;
-            productEntity.Price = product.Price;
-            await _productRepository.UpdateAsync(productEntity);
-            return Ok(new
+            catch(Exception ex)
             {
-                message="Product Updated Successfully"
-            });
+                return BadRequest(ex.Message);
+            }
+           
         }
 
         [HttpDelete]
         public async Task<IActionResult> DeleteProduct(int id)
         {
-            var product = await _productRepository.GetByIdAsync(id);
-            if (product == null)
-            {
-                return NotFound();
+          try {
+                var product = await _productRepository.GetByIdAsync(id);
+                if (product == null)
+                {
+                    return NotFound();
+                }
+                await _productRepository.DeleteAsync(product);
+                return Ok(new
+                {
+                    message = "Product Deleted Successfully"
+                });
             }
-            await _productRepository.DeleteAsync(product);
-            return Ok(new
+            catch(Exception ex)
             {
-                message="Product Deleted Successfully"
-            });
+                return BadRequest(ex.Message);
+            }
+           
         }
 
     }
